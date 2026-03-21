@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Quan ly dich vu</title>
+</head>
+<body>
+<div layout:fragment="content" class="container body-content">
+    <h2 class="mt-3 mb-3">Danh sach dich vu</h2>
+
+    <div class="mb-3 d-flex gap-2">
+        <a th:href="@{/services/add}" class="btn btn-primary">Them dich vu</a>
+        <a th:href="@{/service-categories}" class="btn btn-secondary">Quan ly nhom dich vu</a>
+    </div>
+
+    <div th:if="${successMsg}" class="alert alert-success" th:text="${successMsg}"></div>
+    <div th:if="${errorMsg}" class="alert alert-danger" th:text="${errorMsg}"></div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Ma DV</th>
+            <th>Ten dich vu</th>
+            <th>Nhom</th>
+            <th>Loai chi phi</th>
+            <th>Gia tri</th>
+            <th>Don vi</th>
+            <th>Don vi cung cap</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="service : ${services}">
+            <td th:text="${service.id}"></td>
+            <td th:text="${service.name}"></td>
+            <td th:text="${service.category != null ? service.category.name : ''}"></td>
+            <td th:text="${service.costType}"></td>
+            <td th:text="${service.costValue}"></td>
+            <td th:text="${service.unit}"></td>
+            <td th:text="${service.provider}"></td>
+            <td>
+                <a th:href="@{/services/edit/{id}(id=${service.id})}" class="btn btn-secondary btn-sm">Sua</a>
+                <a th:href="@{/services/delete/{id}(id=${service.id})}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Xoa dich vu nay?');">Xoa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
