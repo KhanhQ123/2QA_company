@@ -137,9 +137,9 @@ public class ServiceManagementController {
                                 RedirectAttributes redirectAttributes) {
         try {
             paymentService.togglePaymentStatus(paymentId);
-            redirectAttributes.addFlashAttribute("successMsg", "Cap nhat trang thai thanh toan thanh cong!");
+            redirectAttributes.addFlashAttribute("successMsg", "Cập nhật trạng thái thành công!");
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMsg", "Cap nhat that bai: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMsg", "Cập nhật trạng thái thất bại: " + e.getMessage());
         }
         return "redirect:/quan-ly-dich-vu/subscribers/" + serviceId;
     }

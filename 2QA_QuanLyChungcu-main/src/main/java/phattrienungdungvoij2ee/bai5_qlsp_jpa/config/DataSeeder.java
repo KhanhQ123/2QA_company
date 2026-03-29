@@ -16,7 +16,7 @@ import java.util.Set;
 
 /**
  * Seed dữ liệu ảo để test các chức năng cơ bản:
- *  - Đăng nhập (admin / cư dân)
+ *  - Đăng nhập (admin.css / cư dân)
  *  - Quản lý chung cư & danh mục
  *  - Dịch vụ & đăng ký dịch vụ
  *  - Hóa đơn hàng tháng (ApartmentMonthlyBill + detail)
@@ -113,7 +113,7 @@ public class DataSeeder implements CommandLineRunner {
         Role adminRole = roles.get(0);
         Role userRole  = roles.get(1);
 
-        Account admin = findOrCreateAccount("admin", "Admin@123", Set.of(adminRole), null, null);
+        Account admin = findOrCreateAccount("admin.css", "Admin@123", Set.of(adminRole), null, null);
         Account cu1   = findOrCreateAccount("nguyen.van.a", "User@123", Set.of(userRole), ccs.get(0), "A1-101");
         Account cu2   = findOrCreateAccount("tran.thi.b",   "User@123", Set.of(userRole), ccs.get(0), "A1-202");
         Account cu3   = findOrCreateAccount("le.van.c",     "User@123", Set.of(userRole), ccs.get(1), "B2-305");
@@ -179,7 +179,7 @@ public class DataSeeder implements CommandLineRunner {
 
     // --------------------------------------------------------------- SUBSCRIPTIONS
     private List<Subscription> seedSubscriptions(List<Account> accounts, List<Dichvu> dichvus) {
-        // accounts: [admin, cu1, cu2, cu3, cu4]
+        // accounts: [admin.css, cu1, cu2, cu3, cu4]
         // cu1 đăng ký: dọn vệ sinh, thẻ hồ bơi, thẻ gym
         // cu2 đăng ký: thu gom rác, bảo vệ xe
         // cu3 đăng ký: thẻ hồ bơi
